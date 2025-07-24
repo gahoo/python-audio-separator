@@ -1,0 +1,8 @@
+FROM beveradb/audio-separator:gpu-0.35.0
+
+ADD requirements.txt /workdir/requirements.txt
+ADD api.py /workdir/api.py
+
+RUN pip install --no-cache-dir -r /workdir/requirements.txt
+
+ENTRYPOINT ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "7000"]
